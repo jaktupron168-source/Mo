@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIP PANEL - FREE FIRE</title>
+    <style>
+        /* สไตล์พื้นหลังและโครงสร้างหลัก */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: radial-gradient(circle, #800000, #000000); /* พื้นหลังแดง-ดำ */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+        }
+
+        /* กล่องพาแนลกึ่งกลางจอ */
+        .panel-container {
+            width: 350px;
+            background: rgba(40, 0, 0, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #ff0000;
+            box-shadow: 0 0 20px #ff0000;
+            text-align: center;
+        }
+
+        h2 { color: #ff3333; text-shadow: 2px 2px #000; }
+
+        /* ส่วน Login */
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ff0000;
+            background: #1a0000;
+            color: white;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #ff0000;
+            border: none;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        button:hover { background: #cc0000; }
+
+        /* ส่วนเมนู (ซ่อนไว้ก่อน Login) */
+        #menu-section { display: none; }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 10px;
+            border-bottom: 1px solid #500000;
+        }
+
+        /* สวิตช์เปิด-ปิด */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+        }
+
+        .switch input { display: none; }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: #555;
+            transition: .4s;
+            border-radius: 20px;
+        }
+
+        input:checked + .slider { background-color: #ff0000; }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 14px; width: 14px;
+            left: 3px; bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider:before { transform: translateX(20px); }
+    </style>
+</head>
+<body>
+
+    <div class="panel-container">
+        <div id="login-section">
+            <h2>LOGIN PANEL</h2>
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <button onclick="checkLogin()">LOGIN</button>
+        </div>
+
+        <div id="menu-section">
+            <h2>MOD MENU</h2>
+            <div class="menu-item"><span>ดูดตัว</span><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+            <div class="menu-item"><span>จอไว</span><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+            <div class="menu-item"><span>ขยายระยะสโคป</span><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+            <div class="menu-item"><span>กันดำ</span><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+            <div class="menu-item"><span>กันแบน</span><label class="switch"><input type="checkbox"><span class="slider"></span></label></div>
+            <button onclick="location.reload()" style="background: #444; margin-top: 20px;">LOGOUT</button>
+        </div>
+    </div>
+
+    <script>
+        function checkLogin() {
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+
+            if (user === "123" && pass === "456") {
+                document.getElementById('login-section').style.display = 'none';
+                document.getElementById('menu-section').style.display = 'block';
+            } else {
+                alert("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง!");
+            }
+        }
+    </script>
+
+</body>
+</html>
+
